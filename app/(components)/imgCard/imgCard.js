@@ -10,8 +10,8 @@ export default async function ImgCard() {
   const cards=await fetchCard()
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {cards.map((card)=>{
-          return<div className="facilities-col">
+      {cards.map((card,i)=>{
+          return<div className="facilities-col" key={i}>
           <Image width={150} height={250} src={urlForImage(card.image).url()} alt=""/>
           <h3 className="text-xl font-bold">{card.title}</h3>
           <p>{card.description}
