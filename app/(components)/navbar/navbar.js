@@ -15,9 +15,9 @@ export default async function Navbar() {
             <div className="nav-links" id="navLinks">
                 <i className="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    {navigation.map((nav)=>{
+                    {navigation.map((nav,i)=>{
                         // console.log(nav.links[0].url)
-                         return<li><Link href={nav.links[0].url}>{nav.title}</Link></li>
+                         return<li key={i}><Link href={nav.links[0].url}>{nav.title}</Link></li>
                     })
                     
                     }

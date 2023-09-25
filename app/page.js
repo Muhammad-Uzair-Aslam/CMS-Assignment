@@ -22,13 +22,13 @@ export default async function Home() {
     <section className="header">
       <Navbar/>
     <div className="text_box">
-      {data.map((data)=>{
-      return<>
+      {data.map((data,i)=>{
+      return<div key={i}>
            <h2>{data.mainTitle}</h2>
            <p id="headtext">{data.title}</p>
            <p>{data.description}
            </p>
-           <Button title={data.buttonText} link="#"/></>
+           <Button title={data.buttonText} link="#"/></div>
       })}
             
         </div></section>

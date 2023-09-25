@@ -9,8 +9,8 @@ export default async function StudentTestimonial() {
   const test=await fetchTestimonial()
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-      {test.map((test) =>{
-           return<div class="testimonials-col">
+      {test.map((test,i) =>{
+           return<div class="testimonials-col" key={i}>
            <Image width={50} height={50} src={urlForImage(test.image).url()} alt="oo.."/>
            <div>
                <p>{test.description}</p>

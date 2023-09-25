@@ -10,9 +10,9 @@ export default async function Footer() {
   return (
     <section className="footer">
         <hr/>
-        {footerData.map((footerData)=>{
+        {footerData.map((footerData,i)=>{
           console.log(footerData.links)
-          return<>
+          return<div key={i}>
           <h4>{footerData.title}</h4>
         <p>{footerData.description}</p>
 
@@ -25,7 +25,7 @@ export default async function Footer() {
         
         <p>{footerData.text}<i className="fas fa-heart"></i>  <a href={footerData.links[0].url}>{footerData.links[0].label}</a></p>
         <p>{footerData.text2} <Link href="index.html">Xplore Skill</Link>. All Rights Reserved</p>
-          </>
+          </div>
         })}
         
     </section>
