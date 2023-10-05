@@ -17,7 +17,7 @@ export default async function Navbar() {
                 <ul>
                     {navigation.map((nav,i)=>{
                         // console.log(nav.links[0].url)
-                         return<li key={i}><Link href={nav.links[0].url}>{nav.title}</Link></li>
+                         return<li key={i}><Link href={nav.description}>{nav.title}</Link></li>
                     })
                     
                     }

@@ -2,8 +2,13 @@ import React from 'react'
 import Header from '../(components)/header/header'
 import InputField from '../(components)/inputField/inputField'
 import Button from '../(components)/button/button'
-
-export default function Contact() {
+import { client } from '@/sanity/lib/client'
+const fetchContact=async()=>{
+    let contact=await client.fetch('*[_type=="contact"]',{},{cache:"no-cache"})
+    return contact
+}
+export default async function Contact() {
+    const contact=await  fetchContact()
   return (
     <div>
       <Header title="Contact Us"/>
@@ -15,27 +20,15 @@ export default function Contact() {
     <section className="contact-us">
         <div className="row">
             <div className="content-col">
-                <div>
-                    <i className="fa fa-home"></i>
+                {contact.map((items)=>{
+                   return <div>
+                    
                     <span>
-                        <h5>NH9 Road, ABC Building</h5>
-                        <p>Ghaziabad, Uttar Pradesh, IN</p>
+                        <h5>{items.heading}</h5>
+                        <p>{items.description}</p>
                     </span>
                 </div>
-                <div>
-                    <i className="fa fa-phone"></i>
-                    <span>
-                        <h5>+91 7445546525</h5>
-                        <p>Monday To Saturday, 9AM To 6PM</p>
-                    </span>
-                </div>
-                <div>
-                    <i className="fa fa-envelope"></i>
-                    <span>
-                        <h5>xyz@email.com</h5>
-                        <p>Email Us Yor Query</p>
-                    </span>
-                </div>
+                })}
             </div>
             <div className="content-col">
                 <form>

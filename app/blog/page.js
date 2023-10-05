@@ -16,9 +16,15 @@ const fetchpostCategories=async()=>{
     console.log(post)
     return post
 }
+const fetchabc=async()=>{
+    const abc=await client.fetch('*[_type=="siteConfig"]',{},{cache:"no-cache"},);
+    console.log(abc)
+    return abc
+}
 export default async function Blog() {
     const Blogs=await fetchBlogs()
     const post=await fetchpostCategories()
+    const abc=await fetchabc()
   return (
     <div>
       <Header title="Our Posts"/>
@@ -36,9 +42,18 @@ export default async function Blog() {
                         <p>{blog.description1}</p><br/>
                     </div>
                 }) 
-                
-                
-                
+                }
+                {abc.map((a)=>{
+                    
+                    return<div>
+                        <p>{a.frontpage._ref}</p><br/>
+                        
+                        <p>{a.url}</p><br/>
+                        <Link href={a.frontpage}>link</Link>
+                        
+                        <Link href={a.url}>link</Link>
+                    </div>
+                }) 
                 }
                 <div className="comment-box">
                     <h3>Leave a Comment</h3>
